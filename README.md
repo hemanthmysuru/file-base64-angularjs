@@ -13,9 +13,9 @@ And will be appened to the object of a controller. And will call the callback fu
   </code>
 </pre>
 <p>
-<i>data-ng-base64:</i> it is a directive.<br>
-<i>data-uploader="uploader()":</i> data-uploader is a callback method passed to directive. uploader() is a function inside controller<br>
-<i>filez="filez":</i> filez is a object of a controller which is passed to directive to update base64 string to this object.<br>
+<code>data-ng-base64:</code> it is a directive.<br>
+<code>data-uploader="uploader()":</code> data-uploader is a callback method passed to directive. uploader() is a function inside controller<br>
+<code>filez="filez":</code> filez is a object of a controller which is passed to directive to update base64 string to this object.<br>
 </p>
 
 <h2>Angularjs</h2>
@@ -38,6 +38,10 @@ as an attribute <code>data-uploader="uploader()"</code>. And updates the <code>$
 
 
 <h3>Directive</h3>
+<p>
+This directive is invoked by the <code>data-ng-base64</code> attribute inside input tag. This directive will reads the file and convert 
+that to base64 formate and append the to <code>scope.filez.basestring</code> like <code>scope.filez.basestring = loadevent.target.result</code>. Finally it calls the callback function <code>uploader()</code> passed to scope <code>callback: '&uploader'</code>, calling inside link <code>scope.callback()</code>
+</p>
 <pre>
   <code>
 	app.directive('ngBase64', [function () {

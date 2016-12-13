@@ -7,4 +7,4 @@ And will be appened to the object of a controller. And will call the callback fu
 # Usage
 html
   * data-ng-base64: is a directive
-<input type="file" name="" value="" placeholder="" data-ng-base64 data-uploader="uploader()" filez="filez">
+  &lt <input type="file" name="" value="" placeholder="" data-ng-base64 data-uploader="uploader()" filez="filez">

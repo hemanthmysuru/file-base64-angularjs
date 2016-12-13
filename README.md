@@ -13,8 +13,8 @@ And will be appened to the object of a controller. And will call the callback fu
   </code>
 </pre>
 <p>
-data-ng-base64: it is a directive.<br>
-data-uploader="uploader()": data-uploader is a callback method passed to directive. uploader() is a function inside controller<br>
-filez="filez": filez is a object of a controller which is passed to directive to update base64 string to this object.<br>
+<i>data-ng-base64:</i> it is a directive.<br>
+<i>data-uploader="uploader()":</i> data-uploader is a callback method passed to directive. uploader() is a function inside controller<br>
+<i>filez="filez":</i> filez is a object of a controller which is passed to directive to update base64 string to this object.<br>
 </p>
 

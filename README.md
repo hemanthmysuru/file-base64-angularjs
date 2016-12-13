@@ -20,6 +20,11 @@ And will be appened to the object of a controller. And will call the callback fu
 
 <h2>Angularjs</h2>
 <h3>Controller</h3>
+<p>
+uploader function is called from the directive synchronusly. Because it is a callback function which is sent from the html input tag
+as an attribute <code>data-uploader="uploader()"</code>. And updates the <code>$scope.filez</code> object from the directive itself. Because even it is passed from html input tag as an attribute <code>filez="filez"</code>.
+</p>
+
 <pre>
   <code>
   	app.controller('fileCtrl', function($scope) {

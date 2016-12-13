@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>File Accessor</title>
+</head>
+<body data-ng-app="fileapp">
+
+	<section data-ng-controller="fileCtrl">
+		<div >
+			<!-- 
+				*	data-ng-base64: directive name
+				*	data-uploader="uploader": this calles uploader() function [callback function]
+				*	filez="filez": its an object where basestring is appended.
+			 -->
+			<input type="file" name="" value="" placeholder="" data-ng-base64 data-uploader="uploader()" filez="filez">
+		</div>
+	</section>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script type="text/javascript">
+		var app = angular.module('fileapp', []);
+		/*
+		 *	Controller
+		 */
+		app.controller('fileCtrl', function($scope) {
+			$scope.filez = {};
+			$scope.uploader = function() {
+				console.log($scope.filez);
+			}
+		})
+
+		/*
+		 *	This function convert file into base64 format, attach base64 string to 
+		 *	scope.accessor.img and calls uploader() function in the controller
+		 *	&uploader: call back function
+		 */
+		app.directive('ngBase64', [function () {
+			return {
+				restrict: 'A',
+				scope: {
+					filez: '=',
+					callback: '&uploader'
+				},
+				link: function (scope, iElement, iAttrs) {
+					iElement.bind('change', function(event) {
+						var reader = new FileReader();
+						var files = event.target.files;
+						reader.readAsDataURL(files[0]);
+						reader.onload = function(loadevent) {
+							var fileInfo = files[0];
+							scope.$apply(function() {
+								scope.filez.basestring = loadevent.target.result;
+								scope.callback();
+							})
+						}
+					})
+				}
+			};
+		}])
+	</script>
+</body>
+</html>

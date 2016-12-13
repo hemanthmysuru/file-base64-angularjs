@@ -19,36 +19,44 @@ And will be appened to the object of a controller. And will call the callback fu
 </p>
 
 <h2>Angularjs</h2>
+<h3>Controller</h3>
+<pre>
+  <code>
+  	app.controller('fileCtrl', function($scope) {
+		$scope.filez = {};
+		$scope.uploader = function() {
+			console.log($scope.filez);
+		}
+	})
+  </code>
+</pre>
+
+
 <h3>Directive</h3>
 <pre>
   <code>
-    /*
-		 *	This function convert file into base64 format, attach base64 string to 
-		 *	scope.accessor.img and calls uploader() function in the controller
-		 *	&uploader: call back function
-		 */
-		app.directive('ngBase64', [function () {
-			return {
-				restrict: 'A',
-				scope: {
-					filez: '=',
-					callback: '&uploader'
-				},
-				link: function (scope, iElement, iAttrs) {
-					iElement.bind('change', function(event) {
-						var reader = new FileReader();
-						var files = event.target.files;
-						reader.readAsDataURL(files[0]);
-						reader.onload = function(loadevent) {
-							var fileInfo = files[0];
-							scope.$apply(function() {
-								scope.filez.basestring = loadevent.target.result;
-								scope.callback();
-							})
-						}
-					})
-				}
-			};
-		}])
+	app.directive('ngBase64', [function () {
+		return {
+			restrict: 'A',
+			scope: {
+				filez: '=',
+				callback: '&uploader'
+			},
+			link: function (scope, iElement, iAttrs) {
+				iElement.bind('change', function(event) {
+					var reader = new FileReader();
+					var files = event.target.files;
+					reader.readAsDataURL(files[0]);
+					reader.onload = function(loadevent) {
+						var fileInfo = files[0];
+						scope.$apply(function() {
+							scope.filez.basestring = loadevent.target.result;
+							scope.callback();
+						})
+					}
+				})
+			}
+		};
+	}])
   </code>
 </pre>

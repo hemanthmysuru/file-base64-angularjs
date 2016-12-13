@@ -7,11 +7,13 @@ And will be appened to the object of a controller. And will call the callback fu
 <h1>Usage</h1>
 
 <h2>HTML</h2>
+<div class="highlight highlight-text-html-basic">
 <pre>
   <code>
   &lt;input type="file" data-ng-base64 data-uploader="uploader()" filez="filez" &gt;
   </code>
 </pre>
+</div>
 <p>
 <code>data-ng-base64:</code> it is a directive.<br>
 <code>data-uploader="uploader()":</code> data-uploader is a callback method passed to directive. uploader() is a function inside controller<br>
